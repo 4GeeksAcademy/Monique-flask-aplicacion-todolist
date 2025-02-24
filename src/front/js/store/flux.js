@@ -13,7 +13,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			auth: false
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -21,6 +22,58 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 
+			logout: () => {
+				console.log("logout")	
+				setStore({ auth: false});
+				localStorage.removeItem("token");
+			
+			},
+
+			login: (email, password) => {
+				const requestOptions = {
+					method: "POST",
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify(
+						{
+							"email":email,
+							"password":password
+						}
+					)
+				};
+		
+				fetch(process.env.BACKEND_URL+ "/api/login", requestOptions)
+					.then(response => {
+						console.log(response.status)
+						if (response.status == 200){
+							setStore({ auth: true });
+						} else{
+							setStore({ auth: false });
+						}
+						return response.json()
+					})
+					.then(data => {
+						localStorage.setItem("token", data.access_token);
+						console.log(data)
+					});
+			},
+
+			signup: (email, password) => {
+				const requestOptions = {
+					method: "POST",
+					headers: {"Content-Type": "application/json"},
+					body: JSON.stringify(
+						{
+							"email":email,
+							"password":password
+						}
+					)
+				};
+		
+				fetch(process.env.BACKEND_URL+ "/api/signup", requestOptions)
+					.then(response => response.text())
+  					.then((result) => console.log(result))
+					
+			},
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
