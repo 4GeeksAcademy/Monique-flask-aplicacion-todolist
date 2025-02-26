@@ -22,9 +22,8 @@ const Signup = () => {
 
     return (
         <div className="form-container">
-        <div className="d-flex justify-content-center" style={{ height: "50vh" }}>
-            <div className="text-center mt-5" style={{ width: "500px" }}>
-                <h2>Crear Cuenta</h2>
+        <div className="form-wrapper">
+            <h2>Crear Cuenta</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="mb-3">
                         <label className="form-label">Email address</label>
@@ -45,7 +44,6 @@ const Signup = () => {
                     <button type="submit" className="btn btn-primary">Registro</button>
                 </form>
             </div>
-        </div>
         </div>
     );
 };

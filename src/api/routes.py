@@ -16,14 +16,6 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
-
-    response_body = {
-        "message": "Yo estoy en el back en routes"
-    }
-
-    return jsonify(response_body), 200
 
 @api.route("/login", methods=["POST"])
 def login():

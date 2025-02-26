@@ -13,6 +13,44 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Asegura que ocupe toda la altura de la pantalla */
+    height: 50vh;
+    background-color: #f4f4f4;
   }
-  
+
+  .form-wrapper {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 500px;
+    text-align: center;
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .private-container {
+    text-align: center;
+    padding: 200px;
+    background: rgb(236, 153, 229);
+}
+
+.img img{
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 2rem;
+  color: #333;
+}
+
+
