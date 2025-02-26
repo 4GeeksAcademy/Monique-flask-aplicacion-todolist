@@ -24,16 +24,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			logout: () => {
 				console.log("logout")	
-				setStore({ auth: false});
 				localStorage.removeItem("token");
-			
+				setStore({ auth: false});
 			},
 
 			login: (email, password) => {
 				const requestOptions = {
 					method: "POST",
 					headers: {"Content-Type": "application/json"},
-					body: JSON.stringify({email, password})
+					body: JSON.stringify({email, password}),
 				};
 		
 				return fetch(process.env.BACKEND_URL+ "/api/login", requestOptions)

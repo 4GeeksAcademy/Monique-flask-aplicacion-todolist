@@ -4,18 +4,19 @@ import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
 	const { store, actions } = useContext(Context);
-
 	const navigate = useNavigate()
 		
 	function handleLogout(){
-		actions.logout()
-		navigate("/")
+		actions.logout(); // llama a la accion de logout para cambiar el estado
+		navigate("/") // redirige a la pagina principal 
 	}
 			
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
-				<button className="btn btn-primary ms-auto"  onClick={()=>handleLogout()}>Logout</button> 
+				{store.auth && (
+				<button className="btn btn-primary ms-auto"  onClick={()=>handleLogout()}>Logout</button>
+				)} 
 			</div>
 		</nav>
 	);
